@@ -20,20 +20,22 @@ public class UsuarioController {
 
     @GetMapping
     public List<Usuario> listartodos(){
-        return usuarioService.listarUsuarios();
+           return usuarioService.listarUsuarios();
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> salvar(@Valid @RequestBody Usuario usuario){
+    public ResponseEntity<String> salvar(@Valid @RequestBody Usuario usuario){
         usuarioService.salvar(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        String mensagem = "Usuario "+ usuario.getNome()+ " cadastrado com sucesso";
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
 
     }
 
     @PutMapping
-    public ResponseEntity<Usuario> atualizar(@Valid @RequestBody Usuario usuario){
+    public ResponseEntity<String> atualizar(@Valid @RequestBody Usuario usuario){
         usuarioService.atualizar(usuario);
-        return ResponseEntity.ok().body(usuario);
+        String mensagem = "Dados de "+ usuario.getNome()+ " alterados com sucesso";
+        return ResponseEntity.ok().body(mensagem);
     }
 
     @DeleteMapping("/{email}")
