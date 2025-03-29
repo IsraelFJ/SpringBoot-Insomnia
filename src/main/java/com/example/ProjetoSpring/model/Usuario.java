@@ -31,11 +31,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, Long id, String nome, String senha) {
+    public Usuario(String email, Endereco endereco, Long id, String nome, String senha, Sexo sexo) {
         this.email = email;
+        this.endereco = endereco;
         this.id = id;
         this.nome = nome;
         this.senha = senha;
+        this.sexo = sexo;
     }
 
     public @NotBlank(message = "O emial é Obrigatorio") @Email(message = "Informe um E-mail valido") String getEmail() {
@@ -44,6 +46,14 @@ public class Usuario {
 
     public void setEmail(@NotBlank(message = "O emial é Obrigatorio") @Email(message = "Informe um E-mail valido") String email) {
         this.email = email;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -62,13 +72,19 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public @NotBlank(message = "A saenha é Onbrigatoria") @Size(min = 3, message = "A senha deve conter no minimo 3 digitos") String getSenha() {
+    public @NotBlank(message = "A senha é Onbrigatoria") @Size(min = 3, message = "A senha deve conter no minimo 3 digitos") String getSenha() {
         return senha;
     }
 
-    public void setSenha(@NotBlank(message = "A saenha é Onbrigatoria") @Size(min = 3, message = "A senha deve conter no minimo 3 digitos") String senha) {
+    public void setSenha(@NotBlank(message = "A senha é Onbrigatoria") @Size(min = 3, message = "A senha deve conter no minimo 3 digitos") String senha) {
         this.senha = senha;
     }
 
+    public Sexo getSexo() {
+        return sexo;
+    }
 
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
 }
