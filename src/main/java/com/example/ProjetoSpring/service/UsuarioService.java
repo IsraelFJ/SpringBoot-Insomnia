@@ -41,7 +41,7 @@ public class UsuarioService {
 
     public void  excluir(String email){
         Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(()-> new RuntimeException("Usuario excluido"));
+                .orElseThrow(()-> new RuntimeException("Usuario excluido com sucesso"));
 
         usuarioRepository.deleteById(usuario.getId());
     }

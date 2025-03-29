@@ -1,9 +1,6 @@
 package com.example.ProjetoSpring.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,6 +11,12 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
+
     @NotBlank(message = "O Nome de Usuario é obrigatorio.")
     private String nome;
 
@@ -21,7 +24,7 @@ public class Usuario {
     @Email(message = "Informe um E-mail valido")
     private String email;
 
-    @NotBlank(message = "A saenha é Onbrigatoria")
+    @NotBlank(message = "A senha é Onbrigatoria")
     @Size(min = 3, message = "A senha deve conter no minimo 3 digitos")
     private String senha;
 
